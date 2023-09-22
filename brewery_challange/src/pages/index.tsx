@@ -4,7 +4,6 @@ import { GetStaticProps, NextPage } from "next"
 import { HomeContainer, ListContainer, NextPageContainer, TagLinkPagination } from "./style"
 import Header from "@/components/Header"
 import { useRouter } from 'next/router'
-import Link from "next/link"
 
 const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
   const router = useRouter()

@@ -1,7 +1,10 @@
+import React from "react"
 import Header from "@/components/Header"
 import { IBrewery } from "@/types/@types"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
+import { CardDetailContainer, MainDetailContainer, TypeTag } from "./style"
+import MapComponent from "@/components/Map"
 
 interface BreweryProps {
   brewery: IBrewery
@@ -14,16 +17,22 @@ const Brewery: NextPage<BreweryProps> = ({ brewery }) => {
   return (
     <>
       <Header />
-      <h2>Brewery Details</h2>
-      <span>Type: {brewery.brewery_type}</span>
-      <span>Name: {brewery.name}</span>
-      <span>City: {brewery.city}</span>
-      <span>State: {brewery.state}</span>
-      <span>Postal code: {brewery.postal_code}</span>
-      <span>Country: {brewery.country}</span>
-      <span>Website: {brewery.website_url}</span>
-      <span>Phone: {brewery.phone}</span>
-      <span>Open in map: {brewery.latitude} {brewery.longitude}</span>
+      <MainDetailContainer>
+        <CardDetailContainer>
+          <h4>{brewery.name}</h4>
+          <span>Type: <TypeTag>{brewery.brewery_type}</TypeTag></span>
+          <span>City: {brewery.city}</span>
+          <span>State: {brewery.state}</span>
+          <span>Postal code: {brewery.postal_code}</span>
+          <span>Country: {brewery.country}</span>
+          <span>Website: {brewery.website_url}</span>
+          <span>Phone: {brewery.phone}</span>
+          <span>Open in map: {brewery.latitude} {brewery.longitude}</span>
+        </CardDetailContainer>
+        <div style={{ width: '100%', height: '400px' }}>
+          <MapComponent latitude={brewery.latitude} longitude={brewery.longitude} />
+        </div>
+      </MainDetailContainer>
     </>
   )
 }

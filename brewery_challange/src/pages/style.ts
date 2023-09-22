@@ -5,6 +5,9 @@ export const HomeContainer = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1rem;
+
+  height: 80vh;
 `
 
 export const ListContainer = styled.ul`
@@ -25,8 +28,15 @@ export const ListContainer = styled.ul`
 
 export const NextPageContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+
+  padding: 1.2rem 3rem;
+
+  @media (min-width: 468px) {
+    justify-content: center;
+    gap: 1rem;
+  }
 `
 
 export const TagLinkPagination = styled(Link)`
@@ -41,8 +51,6 @@ export const TagLinkPagination = styled(Link)`
 
     font-size: .9rem;
     color: var(--gray);
-
-    margin: 0 1rem;
 
     background: var(--hover);
 
