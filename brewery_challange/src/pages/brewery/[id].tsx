@@ -1,3 +1,4 @@
+import Header from "@/components/Header"
 import { IBrewery } from "@/types/@types"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
@@ -12,6 +13,7 @@ const Brewery: NextPage<BreweryProps> = ({ brewery }) => {
 
   return (
     <>
+      <Header />
       <h2>Brewery Details</h2>
       <span>Type: {brewery.brewery_type}</span>
       <span>Name: {brewery.name}</span>

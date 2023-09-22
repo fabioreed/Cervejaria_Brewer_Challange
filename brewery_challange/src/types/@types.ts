@@ -19,4 +19,5 @@ export interface IBrewery {
 
 export interface Props {
   data: IBrewery[]
+  totalBreweries: string
 }

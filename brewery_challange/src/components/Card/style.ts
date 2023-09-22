@@ -20,9 +20,15 @@ export const CardContainer = styled.li`
 
   position: relative;
 
+  transition: .2s ease;
+
   > h4 {
     font-size: 1rem;
     color: var(--brown);
+  }
+
+  &:hover {
+    background: var(--hover);
   }
 
   @media (min-width: 768px) {
