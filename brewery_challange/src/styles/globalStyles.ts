@@ -10,6 +10,9 @@ const GlobalStyles = createGlobalStyle`
     --yellow: #FFDD57;
     --blue: #3273DC;
     --brown: #2E2B2C;
+    --red: #ED474A;
+    --pink: #D4AFCD;
+    --orange: #F05D23;
   }
 `
 

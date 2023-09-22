@@ -21,4 +21,8 @@ export const HeaderContainer = styled.header`
     font-size: .9rem;
     font-style: italic;
   }
+
+  @media (min-width: 768px) {
+    padding: 2rem 8rem;
+  }
 `

@@ -2,6 +2,7 @@ import styled from "styled-components"
 
 export const ListContainer = styled.ul`
   display: flex;
+  gap: 1rem;
 
   overflow-x: auto;
 
@@ -9,6 +10,8 @@ export const ListContainer = styled.ul`
 
   @media (min-width: 768px) {
     flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: space-between;
+
+    padding: 3rem 8rem;
   }
 `

@@ -8,6 +8,43 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({ breweryItem }) => {
+  let tagBackgroundColor = ''
+  let tagTextColor = ''
+
+  switch (breweryItem.brewery_type) {
+    case 'micro':
+      tagBackgroundColor = 'var(--green)'
+      tagTextColor = 'var(--white)'
+      break
+    case 'brewpub':
+      tagBackgroundColor = 'var(--yellow)'
+      tagTextColor = 'var(--black)'
+      break
+    case 'contract':
+      tagBackgroundColor = 'var(--black)'
+      tagTextColor = 'var(--white)'
+      break
+    case 'regional':
+      tagBackgroundColor = 'var(--blue)'
+      tagTextColor = 'var(--white)'
+      break
+    case 'proprietor':
+      tagBackgroundColor = 'var(--blue)'
+      tagTextColor = 'var(--white)'
+      break
+    case 'closed':
+      tagBackgroundColor = 'var(--red)'
+      tagTextColor = 'var(--white)'
+      break
+    case 'large':
+      tagBackgroundColor = 'var(--orange)'
+      tagTextColor = 'var(--white)'
+      break
+    default:
+      tagBackgroundColor = 'var(--green)'
+      tagTextColor = 'var(--white)'
+      break
+  }
 
   return (
     <Link  href={`/brewery/${breweryItem.id}`}>
@@ -19,7 +56,9 @@ const Card: React.FC<Props> = ({ breweryItem }) => {
           <span>{breweryItem.city}</span>
           <span>{breweryItem.state}</span>
         </SectionCard>
-        <TagType>{breweryItem.brewery_type}</TagType>
+        <TagType style={{ backgroundColor: tagBackgroundColor, color: tagTextColor }}>
+          {breweryItem.brewery_type}
+        </TagType>
       </CardContainer>
     </Link>
   )
