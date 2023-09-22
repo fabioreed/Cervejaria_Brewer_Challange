@@ -1,5 +1,4 @@
-import Link from "next/link";
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const CardContainer = styled.li`
   display: flex;
@@ -15,7 +14,7 @@ export const CardContainer = styled.li`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
   > h4 {
-    font-size: .8rem;
+    font-size: .9rem;
     color: var(--black);
   }
 `

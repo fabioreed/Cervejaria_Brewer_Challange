@@ -2,17 +2,19 @@ import Card from "@/components/Card"
 import { Props } from "@/types/@types"
 import { GetStaticProps, NextPage } from "next"
 import { ListContainer } from "./style"
+import Header from "@/components/Header"
 
 const HomeBrewery: NextPage<Props> = ({ data }) => {
 
   return (
-    <div>
+    <>
+      <Header />
       <ListContainer>
         {data.map((breweryItem) => (
           <Card breweryItem={breweryItem} />
         ))}
       </ListContainer>
-    </div>
+    </>
   )
 }
 
