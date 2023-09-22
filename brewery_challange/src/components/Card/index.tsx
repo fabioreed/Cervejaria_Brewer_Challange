@@ -1,31 +1,27 @@
-import Link from 'next/link'
 import React from 'react'
+import { CardContainer, SectionCard, TagType } from './style'
+import { IBrewery } from '@/types/@types'
+import Link from 'next/link'
 
-const Card = ({ breweryItem }: any) => {
+interface Props {
+  breweryItem: IBrewery
+}
+
+const Card: React.FC<Props> = ({ breweryItem }) => {
+
   return (
-    <div>
-      <li key={breweryItem.id}>
-        {breweryItem.website_url ? (
-          <Link href={`/brewery/${breweryItem.id}`}>
-            <h4>{breweryItem.name}</h4>
-            <span>{breweryItem.address_1}</span>
-            <span>{breweryItem.phone}</span>
-            <span>{breweryItem.city}</span>
-            <span>{breweryItem.state}</span>
-            <span>{breweryItem.state}</span>
-          </Link>
-        ) : (
-          <div>
-            <h4>{breweryItem.name}</h4>
-            <span>{breweryItem.address_1}</span>
-            <span>{breweryItem.phone}</span>
-            <span>{breweryItem.city}</span>
-            <span>{breweryItem.state}</span>
-            <span>{breweryItem.state}</span>
-          </div>
-        )}
-      </li>
-    </div>
+    <Link  href={`/brewery/${breweryItem.id}`}>
+      <CardContainer key={breweryItem.id}>
+        <h4>{breweryItem.name}</h4>
+        <SectionCard>
+          <span>{breweryItem.address_1}</span>
+          <span>{breweryItem.phone}</span>
+          <span>{breweryItem.city}</span>
+          <span>{breweryItem.state}</span>
+        </SectionCard>
+        <TagType>{breweryItem.brewery_type}</TagType>
+      </CardContainer>
+    </Link>
   )
 }
 
