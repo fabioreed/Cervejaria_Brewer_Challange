@@ -26,7 +26,7 @@ export const TitleHeaderContainer = styled.div`
 
   > h1 {
     color: var(--white);
-    font-size: 1.4rem;
+    font-size: 1.7rem;
   }
 
   > p {

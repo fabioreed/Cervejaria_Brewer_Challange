@@ -1,6 +1,11 @@
+import Link from "next/link"
 import styled from "styled-components"
 
 export const MainDetailContainer = styled.main`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   padding: 1.2rem 3rem;
 
   @media (min-width: 768px) {
@@ -37,4 +42,22 @@ export const TypeTag = styled.span`
   border-radius: 12px;
 
   padding: .2rem .7rem;
+`
+
+export const BackBtn = styled(Link)`
+  background: var(--green);
+
+  color: var(--white);
+  font-size: .8rem;
+
+  padding: .4rem;
+  width: fit-content;
+
+  border-radius: 6px;
+
+  transition: .2s ease;
+
+  &:hover {
+    background: var(--brown);
+  }
 `

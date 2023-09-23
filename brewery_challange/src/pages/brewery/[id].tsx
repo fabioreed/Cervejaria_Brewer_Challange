@@ -3,7 +3,7 @@ import Header from "@/components/Header"
 import { IBrewery } from "@/types/@types"
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
 import { useRouter } from "next/router"
-import { CardDetailContainer, MainDetailContainer, TypeTag } from "./style"
+import { BackBtn, CardDetailContainer, MainDetailContainer, TypeTag } from "./style"
 import MapComponent from "@/components/Map"
 
 interface BreweryProps {
@@ -18,6 +18,9 @@ const Brewery: NextPage<BreweryProps> = ({ brewery }) => {
     <>
       <Header />
       <MainDetailContainer>
+        <BackBtn href='/'>
+          Back
+        </BackBtn>
         <CardDetailContainer>
           <h4>{brewery.name}</h4>
           <span>Type: <TypeTag>{brewery.brewery_type}</TypeTag></span>
@@ -25,7 +28,10 @@ const Brewery: NextPage<BreweryProps> = ({ brewery }) => {
           <span>State: {brewery.state}</span>
           <span>Postal code: {brewery.postal_code}</span>
           <span>Country: {brewery.country}</span>
-          <span>Website: {brewery.website_url}</span>
+          <span>Website: <a href={brewery.website_url} target="_blank" rel="noopener noreferrer">
+              {brewery.website_url}
+            </a>
+          </span>
           <span>Phone: {brewery.phone}</span>
           <span>Open in map: {brewery.latitude} {brewery.longitude}</span>
         </CardDetailContainer>
