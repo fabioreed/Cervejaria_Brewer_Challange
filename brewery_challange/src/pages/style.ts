@@ -4,10 +4,9 @@ import styled from "styled-components"
 export const HomeContainer = styled.main`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   gap: 1rem;
 
-  padding: 1rem 3rem;
+  padding: 1rem 0 1rem 3rem;
 
   height: 100vh;
 

@@ -5,10 +5,22 @@ export const SelectContainer = styled.select`
 
   width: fit-content;
 
-  color: var(--green);
+  color: var(--gray);
   font-size: .9rem;
 
-  border: 2px solid var(--green);
+  border: 2px solid var(--gray);
 
   border-radius: 6px;
+
+  option {
+    background: var(--white);
+    color: var(--gray);
+
+    padding: .4rem .7rem;
+  }
+
+  option:checked {
+    background-color: var(--green);
+    color: var(--white);
+  }
 `

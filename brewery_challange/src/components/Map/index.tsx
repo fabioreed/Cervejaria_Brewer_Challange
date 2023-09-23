@@ -5,26 +5,28 @@ import View from 'ol/View'
 import TileLayer from 'ol/layer/Tile'
 import OSM from 'ol/source/OSM'
 
-const MapComponent = ({ latitude, longitude }) => {
-  const mapRef = useRef(null)
+const MapComponent = ({ latitude, longitude }: { latitude: number; longitude: number }) => {
+  const mapRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const map = new Map({
-      target: mapRef.current,
-      layers: [
-        new TileLayer({
-          source: new OSM(),
+    if (mapRef.current) {
+      const map = new Map({
+        target: mapRef.current!,
+        layers: [
+          new TileLayer({
+            source: new OSM(),
+          }),
+        ],
+        view: new View({
+          center: [longitude, latitude],
+          zoom: 15,
         }),
-      ],
-      view: new View({
-        center: [longitude, latitude],
-        zoom: 15,
-      }),
-    });
+      })
 
-    return () => {
-      // Cleanup when the component unmounts
-      map.setTarget(null);
+      return () => {
+        // Cleanup when the component unmounts
+        map.setTarget(null)
+      }
     }
   }, [latitude, longitude])
 
