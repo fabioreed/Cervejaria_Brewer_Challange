@@ -24,6 +24,8 @@ export const CardDetailContainer = styled.div`
 
   border-radius: 6px;
 
+  background: var(--white);
+
   > h4 {
     color: var(--brown);
   }
