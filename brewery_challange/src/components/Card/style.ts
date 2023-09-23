@@ -22,6 +22,8 @@ export const CardContainer = styled.li`
 
   transition: .2s ease;
 
+  background: var(--white);
+
   > h4 {
     font-size: 1rem;
     color: var(--brown);
@@ -72,10 +74,12 @@ export const TagType = styled.span`
 
   font-size: .7rem;
   color: var(--white);
-
-  position: absolute;
-  top: -7px;
-  right: 4px;
-
+  
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  
+  @media (min-width: 768px) {
+    /* position: absolute;
+    top: -7px;
+    right: 4px; */
+  }
 `

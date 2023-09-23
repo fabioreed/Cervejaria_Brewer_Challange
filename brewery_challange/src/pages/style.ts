@@ -26,7 +26,9 @@ export const ListContainer = styled.ul`
 
   @media (min-width: 768px) {
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 2rem;
+
+    padding: 0 0;
 
     overflow: hidden;
   }

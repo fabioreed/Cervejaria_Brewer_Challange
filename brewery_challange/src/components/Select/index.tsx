@@ -14,7 +14,7 @@ const Select: React.FC<Props> = ({ onStatusChange }) => {
 
   return (
     <SelectContainer onChange={handleStatusChange}>
-      <option value="">Filter</option>
+      <option value="">All Breweries</option>
       <option value="micro">Micro</option>
       <option value="brewpub">Brewpub</option>
       <option value="contract">Contract</option>
