@@ -38,6 +38,12 @@ const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
     setSelectedStatus(selectedValue) // Atualiza o estado local
   }
 
+  const filteredBreweries = selectedStatus
+    ? filteredData.filter(breweryItem => breweryItem.brewery_type === selectedStatus)
+    : filteredData
+  
+  const breweriesToDisplay = filteredBreweries.slice(startIndex, endIndex)
+
   // Quando o usuário altera o status selecionado no<Select>, a função handleStatusChange 
   // é chamada, atualizando selectedStatus, que, por sua vez, aciona o efeito useEffect.
   // Dentro do efeito, filtramos os dados com base no status selecionado e 
@@ -49,18 +55,29 @@ const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
       <HomeContainer>
         <Select onStatusChange={handleStatusChange} />
         <ListContainer>
-          {filteredData.slice(startIndex, endIndex).map((breweryItem) => (
-            <Card breweryItem={breweryItem} key={breweryItem.id} />
-          ))}
+          {breweriesToDisplay.length === 0 ? (
+            <h1>Sem cervejarias</h1>
+          ) : (
+            breweriesToDisplay.map((breweryItem) => (
+              <Card breweryItem={breweryItem} key={breweryItem.id} />
+            ))
+          )}
         </ListContainer>
         <NextPageContainer className="pagination">
-          {Array.from({ length: totalPages }).map((_, index) => (
-            <TagLinkPagination href={`/?page=${index + 1}`} key={index}>
-              <span className={page === `${index + 1}` ? 'active' : ''}>
-                {index + 1}
-              </span>
-            </TagLinkPagination>
-          ))}
+          {Array.from({ length: totalPages }).map((_, index) => {
+            const pageIndex = index + 1
+            if (breweriesToDisplay.length > 0 || pageIndex === 1) {
+              return (
+                <TagLinkPagination href={`/?page=${index + 1}`} key={index}>
+                  <span className={page === `${index + 1}` ? 'active' : ''}>
+                    {index + 1}
+                  </span>
+                </TagLinkPagination>
+              )
+            }
+
+            return null //nao exibe paginas vazias
+          })}
         </NextPageContainer>
       </HomeContainer>
     </>
