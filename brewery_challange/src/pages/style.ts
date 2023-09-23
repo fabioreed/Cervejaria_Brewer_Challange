@@ -7,7 +7,13 @@ export const HomeContainer = styled.main`
   justify-content: space-between;
   gap: 1rem;
 
-  height: 80vh;
+  padding: 1rem 3rem;
+
+  height: 100vh;
+
+  @media (min-width: 768px) {
+    padding: 3rem 8rem;
+  }
 `
 
 export const ListContainer = styled.ul`
@@ -16,13 +22,13 @@ export const ListContainer = styled.ul`
 
   overflow-x: auto;
 
-  padding: 1.2rem 3rem;
+  padding: 1.2rem 0;
 
   @media (min-width: 768px) {
     flex-wrap: wrap;
     justify-content: space-between;
 
-    padding: 3rem 8rem;
+    overflow: hidden;
   }
 `
 

@@ -15,13 +15,11 @@ const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
   const startIndex = (parseInt(page) - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
 
-  const breweriesToDisplay = data.slice(startIndex, endIndex)
-
   const totalPages = Math.ceil(totalBreweries / itemsPerPage)
 
-  const [selectedStatus, setSelectedStatus] = useState<string>('')
+  const [selectedStatus, setSelectedStatus] = useState('') //armazena o status selecionado pelo user
 
-  const [filteredData, setFilteredData] = useState(data)
+  const [filteredData, setFilteredData] = useState(data) //armazena os dados filtrados
 
   useEffect(() => {
     const filterData = () => {
@@ -39,6 +37,11 @@ const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
   const handleStatusChange = (selectedValue: string) => {
     setSelectedStatus(selectedValue) // Atualiza o estado local
   }
+
+  // Quando o usuário altera o status selecionado no<Select>, a função handleStatusChange 
+  // é chamada, atualizando selectedStatus, que, por sua vez, aciona o efeito useEffect.
+  // Dentro do efeito, filtramos os dados com base no status selecionado e 
+  // atualizamos filteredData.A lista renderizada é baseada em filteredData
 
   return (
     <>

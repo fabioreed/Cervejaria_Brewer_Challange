@@ -1,4 +1,5 @@
 import React from 'react'
+import { SelectContainer } from './style'
 
 interface Props {
   onStatusChange: (value: string) => void
@@ -12,7 +13,7 @@ const Select: React.FC<Props> = ({ onStatusChange }) => {
   }
 
   return (
-    <select onChange={handleStatusChange} >
+    <SelectContainer onChange={handleStatusChange}>
       <option value="">Filter</option>
       <option value="micro">Micro</option>
       <option value="brewpub">Brewpub</option>
@@ -21,7 +22,7 @@ const Select: React.FC<Props> = ({ onStatusChange }) => {
       <option value="proprietor">Proprietor</option>
       <option value="closed">Closed</option>
       <option value="large">Large</option>
-    </select>
+    </SelectContainer>
   )
 }
 
