@@ -1,38 +1,28 @@
-import React, { useEffect, useRef } from 'react'
-import 'ol/ol.css'
-import Map from 'ol/Map'
-import View from 'ol/View'
-import TileLayer from 'ol/layer/Tile'
-import OSM from 'ol/source/OSM'
+import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
 
 const MapComponent = ({ latitude, longitude }: { latitude: number; longitude: number }) => {
-  const mapRef = useRef<HTMLDivElement | null>(null);
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: 'AIzaSyBGm-26TTfRtzk18RaEGtkSPYnjrJUdcyU'
+  })
 
-  useEffect(() => {
-    if (mapRef.current) {
-      const map = new Map({
-        target: mapRef.current!,
-        layers: [
-          new TileLayer({
-            source: new OSM(),
-          }),
-        ],
-        view: new View({
-          center: [longitude, latitude],
-          zoom: 15,
-        }),
-      })
+  const position = {
+    lat: latitude,
+    lng: longitude
+  }
 
-      return () => {
-        // Cleanup when the component unmounts
-        map.setTarget(null)
-      }
-    }
-  }, [latitude, longitude])
-
-  return (
-    <div ref={mapRef} style={{ width: '100%', height: '400px' }}></div>
-  )
+  return isLoaded ? (
+    <GoogleMap
+      mapContainerStyle={{ width: '100%', height: '100%'}}
+      center={{
+        lat: latitude,
+        lng: longitude
+      }}
+      zoom={15}
+    >
+      <Marker position={position} />
+    </GoogleMap>
+  ) : <></>
 }
 
 export default MapComponent

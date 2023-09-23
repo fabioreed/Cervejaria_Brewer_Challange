@@ -36,7 +36,7 @@ const Brewery: NextPage<BreweryProps> = ({ brewery }) => {
           <span>Open in map: {brewery.latitude} {brewery.longitude}</span>
         </CardDetailContainer>
         <div style={{ width: '100%', height: '400px' }}>
-          <MapComponent latitude={brewery.latitude} longitude={brewery.longitude} />
+          <MapComponent latitude={parseFloat(brewery.latitude)} longitude={parseFloat(brewery.longitude)} />
         </div>
       </MainDetailContainer>
     </>
