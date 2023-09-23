@@ -10,13 +10,13 @@ import NoBrewery from "@/components/NoBrewery"
 
 const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
   const router = useRouter()
-  const page = router.query.page ?? '1'
+  const page = typeof router.query.page === 'string' ? router.query.page : '1'
 
   const itemsPerPage = 8
   const startIndex = (parseInt(page) - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
 
-  const totalPages = Math.ceil(totalBreweries / itemsPerPage)
+  const totalPages = Math.ceil(parseInt(totalBreweries) / itemsPerPage)
 
   const [selectedStatus, setSelectedStatus] = useState('') //armazena o status selecionado pelo user
 
