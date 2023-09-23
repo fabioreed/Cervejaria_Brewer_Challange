@@ -4,6 +4,8 @@ import { GetStaticProps, NextPage } from "next"
 import { HomeContainer, ListContainer, NextPageContainer, TagLinkPagination } from "./style"
 import Header from "@/components/Header"
 import { useRouter } from 'next/router'
+import { useEffect, useState } from "react"
+import Select from "@/components/Select"
 
 const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
   const router = useRouter()
@@ -17,12 +19,34 @@ const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
 
   const totalPages = Math.ceil(totalBreweries / itemsPerPage)
 
+  const [selectedStatus, setSelectedStatus] = useState<string>('')
+
+  const [filteredData, setFilteredData] = useState(data)
+
+  useEffect(() => {
+    const filterData = () => {
+      if (selectedStatus === '') {
+        setFilteredData(data)
+      } else {
+        const filtered = data.filter(breweryItem => breweryItem.brewery_type === selectedStatus)
+        setFilteredData(filtered)
+      }
+    }
+
+    filterData()
+  }, [selectedStatus, data])
+
+  const handleStatusChange = (selectedValue: string) => {
+    setSelectedStatus(selectedValue) // Atualiza o estado local
+  }
+
   return (
     <>
       <Header />
       <HomeContainer>
+        <Select onStatusChange={handleStatusChange} />
         <ListContainer>
-          {breweriesToDisplay.map((breweryItem) => (
+          {filteredData.slice(startIndex, endIndex).map((breweryItem) => (
             <Card breweryItem={breweryItem} key={breweryItem.id} />
           ))}
         </ListContainer>
