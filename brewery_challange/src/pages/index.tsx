@@ -6,6 +6,7 @@ import Header from "@/components/Header"
 import { useRouter } from 'next/router'
 import { useEffect, useState } from "react"
 import Select from "@/components/Select"
+import NoBrewery from "@/components/NoBrewery"
 
 const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
   const router = useRouter()
@@ -56,7 +57,7 @@ const HomeBrewery: NextPage<Props> = ({ data, totalBreweries }) => {
         <Select onStatusChange={handleStatusChange} />
         <ListContainer>
           {breweriesToDisplay.length === 0 ? (
-            <h1>Sem cervejarias</h1>
+            <NoBrewery />
           ) : (
             breweriesToDisplay.map((breweryItem) => (
               <Card breweryItem={breweryItem} key={breweryItem.id} />
